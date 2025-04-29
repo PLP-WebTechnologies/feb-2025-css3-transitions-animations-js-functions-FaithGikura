@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animated Profile Card </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Welcome to My Animated Card </h1>
+
+    <div class="card" id="profileCard">
+        <img src="jey1.jpg" alt="Profile Image">
+        <h2>Faith Gikura</h2>
+        <p>Web Developer & Designer</p>
+        <button id="changeThemeBtn">Change Theme Color</button>
+    </div>
+
+    <script>
+        const card = document.getElementById('profileCard');
+        const changeThemeBtn = document.getElementById('changeThemeBtn');
+
+        window.onload = function() {
+            const savedColor = localStorage.getItem('cardColor');
+            if (savedColor) {
+                card.style.backgroundColor = savedColor;
+            }
+            card.classList.add('slide-in'); 
+        };
+
+        changeThemeBtn.addEventListener('click', function() {
+            const newColor = prompt("Enter a HEX color code (e.g., #ff5733):");
+            if (newColor) {
+                card.style.backgroundColor = newColor;
+                localStorage.setItem('cardColor', newColor);
+            }
+        });
+    </script>
+
+</body>
+</html>
